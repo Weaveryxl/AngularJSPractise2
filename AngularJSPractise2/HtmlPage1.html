@@ -5,47 +5,32 @@
 	<meta charset="utf-8" />
     <script src="scripts/angular.js"></script>
     <script src="scripts/Script.js"></script>
+    <script src="scripts/jquery-1.9.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
 </head>
 <body ng-controller="myController">
-    <table>
+    <table class="table table-hover">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Gender</th>
-                <th>Fraction</th>
+                <th>Name</th>
+                <th>Likes</th>
+                <th>Dislikes</th>
+                <th>Like/Dislike</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="employee in employees">
-                <td>{{employee.firstName}}</td>
-                <td>{{employee.lastName}}</td>
-                <td>{{employee.gender}}</td>
-                <td>{{employee.fraction}}</td>
+            <tr ng-repeat="technology in technologies">
+                <td>{{technology.name}}</td>
+                <td>{{technology.likes}}</td>
+                <td>{{technology.dislikes}}</td>
+                <td>
+                    <input type="button" value="Like" class="btn btn-primary" ng-click="incrementLikes(technology)" />
+                    <input type="button" value="Dislike" class="btn btn-danger" ng-click="incrementDislikes(technology)" />
+                </td>
             </tr>
         </tbody>
     </table>
-    <ul>
-        <li ng-repeat="figure in figures">
-            {{figure.firstName + ' ' + figure.lastName}} - Index = {{$index}}
-            <ul>
-                <li ng-repeat="relate in figure.related">
-                    {{relate.name}}
-                    {{relate.relationship}} - Parent Index = {{ $parent.$index }}, Index = {{$index}}
-                </li>
-            </ul>
-        </li>
-        <!--OR-->
-        <li ng-repeat="figure in figures" ng-init="parentIndex = $index">
-            {{figure.firstName + ' ' + figure.lastName}} - Index = {{$index}}
-            <ul>
-                <li ng-repeat="relate in figure.related">
-                    {{relate.name}}
-                    {{relate.relationship}} - Parent Index = {{ parentIndex }}, Index = {{$index}}
-                </li>
-            </ul>
-        </li>
-    </ul>
-
 </body>
 </html>
