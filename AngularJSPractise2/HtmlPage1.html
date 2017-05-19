@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/Script.js"></script>
+</head>
+<body ng-controller="myController">
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Fraction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees">
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.fraction}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li ng-repeat="figure in figures">
+            {{figure.firstName + ' ' + figure.lastName}} - Index = {{$index}}
+            <ul>
+                <li ng-repeat="relate in figure.related">
+                    {{relate.name}}
+                    {{relate.relationship}} - Parent Index = {{ $parent.$index }}, Index = {{$index}}
+                </li>
+            </ul>
+        </li>
+        <!--OR-->
+        <li ng-repeat="figure in figures" ng-init="parentIndex = $index">
+            {{figure.firstName + ' ' + figure.lastName}} - Index = {{$index}}
+            <ul>
+                <li ng-repeat="relate in figure.related">
+                    {{relate.name}}
+                    {{relate.relationship}} - Parent Index = {{ parentIndex }}, Index = {{$index}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
