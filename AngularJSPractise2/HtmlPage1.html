@@ -5,6 +5,7 @@
 	<meta charset="utf-8" />
     <script src="scripts/angular.js"></script>
     <script src="scripts/Script.js"></script>
+    <script src="scripts/Filters.js"></script>
     <script src="scripts/jquery-1.9.1.js"></script>
     <script src="scripts/bootstrap.js"></script>
     <link href="Content/bootstrap.css" rel="stylesheet" />
@@ -40,6 +41,9 @@
                 <th ng-click="sortData('salary')">
                     Salary(currency) <div ng-class="getSortClass('salary')"></div>
                 </th>
+                <th ng-click="sortData('gender')">
+                    Gender <div ng-class="getSortClass('gender')"></div>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -56,6 +60,7 @@
                 <td>{{technology.startDate | date: "dd/MM/yyyy"}}</td>
                 <td>{{technology.salary | number: 2}}</td>
                 <td>{{technology.salary | currency: "$": 2}}</td>
+                <td>{{technology.gender | gender}}</td>
             </tr>
         </tbody>
     </table>

@@ -2,12 +2,24 @@
 
 var app = angular
                 .module("myModule", [])
+                //.filter("gender", function () { // has been moved to seperated file - Filter.js
+                //    return function (gender) {
+                //        switch (gender) {
+                //            case 1:
+                //                return "Male";
+                //            case 2:
+                //                return "Female";
+                //            case 3:
+                //                return "Not specified";
+                //        }
+                //    }
+                //})
                 .controller("myController", function ($scope) {
                     var technologies = [
-                        {name: "C#", likes: 0, dislikes: 0, salary: 60000, startDate: new Date("November 23, 1980")},
-                        { name: "ASP.NET", likes: 0, dislikes: 0, salary: 70000, startDate: new Date("May 05, 1970") },
-                        { name: "SQL Server", likes: 0, dislikes: 0, salary: 60000, startDate: new Date("August 15, 1974") },
-                        { name: "AngularJS", likes: 0, dislikes: 0, salary: 65000, startDate: new Date("December 30, 1983") }
+                        {name: "C#", likes: 0, dislikes: 0, salary: 60000, startDate: new Date("November 23, 1980"), gender: 1},
+                        { name: "ASP.NET", likes: 0, dislikes: 0, salary: 70000, startDate: new Date("May 05, 1970"), gender: 2 },
+                        { name: "SQL Server", likes: 0, dislikes: 0, salary: 60000, startDate: new Date("August 15, 1974"), gender: 2},
+                        { name: "AngularJS", likes: 0, dislikes: 0, salary: 65000, startDate: new Date("December 30, 1983"), gender: 3}
                     ]
 
                     $scope.technologies = technologies;
