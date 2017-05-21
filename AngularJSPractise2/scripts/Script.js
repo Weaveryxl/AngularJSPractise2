@@ -20,4 +20,5 @@ var app = angular
                         technology.dislikes++;
                     }
                     $scope.rowLimit = 2;
+                    $scope.sortColumn = "name";
                 });

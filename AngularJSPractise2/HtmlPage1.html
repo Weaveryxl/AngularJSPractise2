@@ -13,6 +13,13 @@
 <body ng-controller="myController">
     Rows to display : <input type="number" step="1" min="0" max="4" ng-model="rowLimit"/>
     <br/>
+    Order by : <select ng-model="sortColumn">
+                    <option value="name">Name ASC</option>
+                    <option value="likes">Likes ASC</option>
+                    <option value="dislikes">Dislikes ASC</option>
+                    <option value="salary">Salary ASC</option>
+                    <option value="-startDate">Start Date DESC</option>
+    </select>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -26,7 +33,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="technology in technologies | limitTo: rowLimit : 0">
+            <!--<tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: 'name' : false">-->
+            <tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: sortColumn">
                 <td>{{technology.name | uppercase}}</td>
                 <td>{{technology.likes}}</td>
                 <td>{{technology.dislikes}}</td>
