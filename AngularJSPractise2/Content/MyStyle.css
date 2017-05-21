@@ -1,0 +1,24 @@
+﻿.Myglyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  display: inline-block;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Myglyphicon-triangle-bottom:before {
+  content: "\e252";
+}
+.Myglyphicon-triangle-top:before {
+  content: "\e253";
+}
+
+th{
+    cursor:pointer;
+}
