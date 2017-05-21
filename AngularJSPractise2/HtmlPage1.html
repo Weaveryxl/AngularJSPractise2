@@ -14,7 +14,10 @@
 <body ng-controller="myController">
     Rows to display : <input type="number" step="1" min="0" max="4" ng-model="rowLimit"/>
     <br/>
-    Search : <input type="text" placeholder="Search employees" ng-model="searchText.name" />
+    <!--Search : <input type="text" placeholder="Search name" ng-model="searchText.name" />
+    Search : <input type="text" placeholder="Search salary" ng-model="searchText.salary" />-->
+    Search : <input type="text" placeholder="Search name & salary" ng-model="searchText" />
+    <input type="checkbox" ng-model="exactMatch"/> Exact Match<!--Because it's a checkbox, so the exactMatch is a boolean-->
     <table class="table table-hover">
         <thead>
             <tr>
@@ -41,7 +44,8 @@
         </thead>
         <tbody>
             <!--<tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: 'name' : false">-->
-            <tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: sortColumn : reverseSort | filter: searchText">
+            <!--<tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: sortColumn : reverseSort | filter: searchText : exactMatch">-->
+            <tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: sortColumn : reverseSort | filter: search">
                 <td>{{technology.name | uppercase}}</td>
                 <td>{{technology.likes}}</td>
                 <td>{{technology.dislikes}}</td>

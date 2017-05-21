@@ -34,5 +34,18 @@ var app = angular
                         }
                         return '';
                     }
+                    
+                    $scope.search = function (item) {
+                        if ($scope.searchText == undefined) {
+                            return true;
+                        }
+                        else {
+                            if (item.name.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 ||
+                                item.salary.toString().toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) {
+                                return true;
+                            }
+                        }
 
+                        return false;
+                    }
                 });
