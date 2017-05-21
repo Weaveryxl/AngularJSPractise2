@@ -14,13 +14,7 @@
 <body ng-controller="myController">
     Rows to display : <input type="number" step="1" min="0" max="4" ng-model="rowLimit"/>
     <br/>
-    Order by : <select ng-model="sortColumn">
-                    <option value="name">Name ASC</option>
-                    <option value="likes">Likes ASC</option>
-                    <option value="dislikes">Dislikes ASC</option>
-                    <option value="salary">Salary ASC</option>
-                    <option value="-startDate">Start Date DESC</option>
-    </select>
+    Search : <input type="text" placeholder="Search employees" ng-model="searchText.name" />
     <table class="table table-hover">
         <thead>
             <tr>
@@ -47,7 +41,7 @@
         </thead>
         <tbody>
             <!--<tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: 'name' : false">-->
-            <tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: sortColumn : reverseSort">
+            <tr ng-repeat="technology in technologies | limitTo: rowLimit : 0 | orderBy: sortColumn : reverseSort | filter: searchText">
                 <td>{{technology.name | uppercase}}</td>
                 <td>{{technology.likes}}</td>
                 <td>{{technology.dislikes}}</td>
