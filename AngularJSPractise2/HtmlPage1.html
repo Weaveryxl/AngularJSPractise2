@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="myModule">
+<html>
 <head>
     <title></title>
 	<meta charset="utf-8" />
@@ -12,28 +12,15 @@
     <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/MyStyle.css" rel="stylesheet" />
 </head>
-<body ng-controller="myController" ng-init="employees = [
-                                            { name: 'Ben', gender: 'Male', city: 'London'},
-                                            { name: 'Sara', gender: 'Female', city: 'Chennai'},
-                                            { name: 'Mark', gender: 'Male', city: 'Chicago'},
-                                            { name: 'Pam', gender: 'Female', city: 'London'},
-                                            { name: 'Todd', gender: 'Male', city: 'Chennai'},
-                                        ]">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>gender</th>
-                <th>City</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="employee in employees">
-                <td>{{employee.name}}</td>
-                <td>{{employee.gender}}</td>
-                <td>{{employee.city}}</td>
-            </tr>
-        </tbody>
-    </table>
+<body ng-app="myModule" >
+    <div ng-controller="myController">
+        Select View :
+        <select ng-model="employeeView">
+            <option value="EmployeeTable.html">Table</option>
+            <option value="EmployeeList.html">List</option>
+        </select>
+        <br/>
+        <div ng-include="employeeView"></div>
+    </div>
 </body>
 </html>
