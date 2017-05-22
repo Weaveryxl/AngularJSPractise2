@@ -19,6 +19,7 @@
     Search : <input type="text" placeholder="Search salary" ng-model="searchText.salary" />-->
     Search : <input type="text" placeholder="Search name & salary" ng-model="searchText" />
     <input type="checkbox" ng-model="exactMatch"/> Exact Match<!--Because it's a checkbox, so the exactMatch is a boolean-->
+    <input type="checkbox" ng-model="hideStartDate" /> Hide Start Date
     <table class="table table-hover">
         <thead>
             <tr>
@@ -32,7 +33,10 @@
                     Dislikes <div ng-class="getSortClass('dislikes')"></div>
                 </th>
                 <th>Like/Dislike</th>
-                <th ng-click="sortData('startDate')">
+                <th ng-click="sortData('startDate')" ng-hide="hideStartDate">
+                    Start Date <div ng-class="getSortClass('startDate')"></div>
+                </th>
+                <th ng-click="sortData('startDate')" ng-show="hideStartDate">
                     Start Date <div ng-class="getSortClass('startDate')"></div>
                 </th>
                 <th ng-click="sortData('salary')">
@@ -57,7 +61,8 @@
                     <input type="button" value="Like" class="btn btn-primary" ng-click="incrementLikes(technology)" />
                     <input type="button" value="Dislike" class="btn btn-danger" ng-click="incrementDislikes(technology)" />
                 </td>
-                <td>{{technology.startDate | date: "dd/MM/yyyy"}}</td>
+                <td ng-hide="hideStartDate">{{technology.startDate | date: "dd/MM/yyyy"}}</td>
+                <td ng-show="hideStartDate">######</td>
                 <td>{{technology.salary | number: 2}}</td>
                 <td>{{technology.salary | currency: "$": 2}}</td>
                 <td>{{technology.gender | gender}}</td>
