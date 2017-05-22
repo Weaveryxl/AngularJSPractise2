@@ -138,6 +138,7 @@
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\Script.js" />
+    <Content Include="scripts\StringService.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
