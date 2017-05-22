@@ -96,6 +96,7 @@
   <ItemGroup>
     <Content Include="Content\MyStyle.css" />
     <Content Include="EmployeeList.html" />
+    <Content Include="EmployeeService.asmx" />
     <Content Include="EmployeeTable.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -140,6 +141,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeService.asmx.cs">
+      <DependentUpon>EmployeeService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
