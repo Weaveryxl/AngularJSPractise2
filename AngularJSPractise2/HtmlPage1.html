@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="demoApp">
 <head>
     <title></title>
 	<meta charset="utf-8" />
@@ -13,25 +13,95 @@
     <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/MyStyle.css" rel="stylesheet" />
 </head>
-<body ng-app="myModule" >
-    <div ng-controller="myController">
-        <br />
-        <table class="table table-hover">
-            <tr>
-                <td>Your String</td>
-                <td><input type="text" ng-model="input"/></td>
-            </tr>
-            <tr>
-                <td>Result</td>
-                <td><input type="text" ng-model="output"/></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="button" ng-click="transformString(input)" value="Process String" />
-                </td>
-            </tr>
-        </table>
+<body ng-controller="demoController">
+    <button id="top" ng-click="scrollTo('bottom')">Go to bottom of the page</button>
+    <br />
+    <div class="row">
+        <div class="col-lg-4">
+            <div>
+                Why AngularJS? HTML is great for declaring static documents,
+                but it falters when we try to use it for declaring dynamic
+                views in web-applications. AngularJS lets you extend HTML
+                vocabulary for your application. The resulting environment
+                is extraordinarily expressive, readable, and quick to develop.
+
+                Alternatives
+                Other frameworks deal with HTML’s shortcomings by either
+                abstracting away HTML, CSS, and/or JavaScript or by providing
+                an imperative way for manipulating the DOM. Neither of these
+                address the root problem that HTML was not designed for dynamic
+                views.
+
+                Extensibility
+                AngularJS is a toolset for building the framework most suited
+                to your application development. It is fully extensible and
+                works well with other libraries. Every feature can be modified
+                or replaced to suit your unique development workflow and feature
+                needs. Read on to find out how.
+
+                Why AngularJS? HTML is great for declaring static documents,
+                but it falters when we try to use it for declaring dynamic
+                views in web-applications. AngularJS lets you extend HTML
+                vocabulary for your application. The resulting environment
+                is extraordinarily expressive, readable, and quick to develop.
+
+                Alternatives
+                Other frameworks deal with HTML’s shortcomings by either
+                abstracting away HTML, CSS, and/or JavaScript or by providing
+                an imperative way for manipulating the DOM. Neither of these
+                address the root problem that HTML was not designed for dynamic
+                views.
+
+                Extensibility
+                AngularJS is a toolset for building the framework most suited
+                to your application development. It is fully extensible and
+                works well with other libraries. Every feature can be modified
+                or replaced to suit your unique development workflow and feature
+                needs. Read on to find out how.
+
+                Why AngularJS? HTML is great for declaring static documents,
+                but it falters when we try to use it for declaring dynamic
+                views in web-applications. AngularJS lets you extend HTML
+                vocabulary for your application. The resulting environment
+                is extraordinarily expressive, readable, and quick to develop.
+
+                Alternatives
+                Other frameworks deal with HTML’s shortcomings by either
+                abstracting away HTML, CSS, and/or JavaScript or by providing
+                an imperative way for manipulating the DOM. Neither of these
+                address the root problem that HTML was not designed for dynamic
+                views.
+
+                Extensibility
+                AngularJS is a toolset for building the framework most suited
+                to your application development. It is fully extensible and
+                works well with other libraries. Every feature can be modified
+                or replaced to suit your unique development workflow and feature
+                needs. Read on to find out how.
+
+                Why AngularJS? HTML is great for declaring static documents,
+                but it falters when we try to use it for declaring dynamic
+                views in web-applications. AngularJS lets you extend HTML
+                vocabulary for your application. The resulting environment
+                is extraordinarily expressive, readable, and quick to develop.
+
+                Alternatives
+                Other frameworks deal with HTML’s shortcomings by either
+                abstracting away HTML, CSS, and/or JavaScript or by providing
+                an imperative way for manipulating the DOM. Neither of these
+                address the root problem that HTML was not designed for dynamic
+                views.
+
+                Extensibility
+                AngularJS is a toolset for building the framework most suited
+                to your application development. It is fully extensible and
+                works well with other libraries. Every feature can be modified
+                or replaced to suit your unique development workflow and feature
+                needs. Read on to find out how.
+            </div>
+            <br />
+            <button id="bottom" ng-click="scrollTo('top')">Go to top of the page</button>
+        </div>
     </div>
 </body>
 </html>
