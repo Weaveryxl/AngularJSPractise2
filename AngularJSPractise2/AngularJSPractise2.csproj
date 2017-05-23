@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\MyStyle.css" />
+    <Content Include="Content\NewStyle.css" />
+    <Content Include="CountryService.asmx" />
     <Content Include="EmployeeList.html" />
     <Content Include="EmployeeService.asmx" />
     <Content Include="EmployeeTable.html" />
@@ -142,6 +144,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="City.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="CountryService.asmx.cs">
+      <DependentUpon>CountryService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeService.asmx.cs">
       <DependentUpon>EmployeeService.asmx</DependentUpon>
