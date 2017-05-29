@@ -96,17 +96,17 @@
   <ItemGroup>
     <Content Include="Content\MyStyle.css" />
     <Content Include="Content\NewStyle.css" />
-    <Content Include="CountryService.asmx" />
-    <Content Include="EmployeeList.html" />
-    <Content Include="EmployeeService.asmx" />
-    <Content Include="EmployeeTable.html" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-route.min.js" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\Filters.js" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
+    <Content Include="scripts\angular-route.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -120,7 +120,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\angular-mocks.js" />
@@ -144,17 +143,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="City.cs" />
-    <Compile Include="Country.cs" />
-    <Compile Include="CountryService.asmx.cs">
-      <DependentUpon>CountryService.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Employee.cs" />
-    <Compile Include="EmployeeService.asmx.cs">
-      <DependentUpon>EmployeeService.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
