@@ -44,7 +44,7 @@ var routeApp = angular
                             })
                             .when("/students/:id", {
                                 templateUrl: "Templates/StudentDetails.html",
-                                controller: "studentDetailsController as studentDetailCTRL"
+                                controller: "studentDetailsController as studentDetailsCTRL"
                             })
                             .otherwise({
                                 redirectTo: "/home"
@@ -73,6 +73,6 @@ var routeApp = angular
                                 method: "GET"
                             })
                             .then(function (response) {
-                                this.student = response.data;
+                                vm.student = response.data;
                             })
                         })
