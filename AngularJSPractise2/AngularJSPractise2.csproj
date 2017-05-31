@@ -144,6 +144,7 @@
     <Content Include="Templates\Course.html" />
     <Content Include="Templates\home.html" />
     <Content Include="Templates\Student.html" />
+    <Content Include="Templates\studentDetails.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
