@@ -40,6 +40,9 @@ var routeApp = angular
                                 templateUrl: "Templates/Student.html",
                                 controller: "studentsController"
                             })
+                            .otherwise({
+                                redirectTo: "/home"
+                            })
                         $locationProvider.html5Mode(true);
                         })
                         .controller("homeController", function ($scope) {
