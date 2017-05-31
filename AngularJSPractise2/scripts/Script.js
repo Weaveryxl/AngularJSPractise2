@@ -40,6 +40,7 @@ var routeApp = angular
                                 templateUrl: "Templates/Student.html",
                                 controller: "studentsController"
                             })
+                        $locationProvider.html5Mode(true);
                         })
                         .controller("homeController", function ($scope) {
                             $scope.message = "Home Page";
