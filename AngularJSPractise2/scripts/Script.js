@@ -28,15 +28,18 @@ var routeApp = angular
                     .module("routeApp", ["ngRoute"])
                     .config(function ($routeProvider, $locationProvider) {
                         $locationProvider.hashPrefix('');
+                        $routeProvider.caseInsensitiveMatch = true;
                         $routeProvider
                             .when("/home", {
-                                templateUrl: "Templates/home.html",
+                                //templateUrl: "Templates/home.html",
+                                template: "<h1>Inline Template in Action</h1>",
                                 controller: "homeController",
                                 controllerAs: "homeCTRL"
                             })
                             .when("/courses", {
                                 templateUrl: "Templates/Course.html",
-                                controller: "coursesController as coursesCTRL"
+                                controller: "coursesController as coursesCTRL",
+                                caseInsensitiveMatch: true
                             })
                             .when("/students", {
                                 templateUrl: "Templates/Student.html",
