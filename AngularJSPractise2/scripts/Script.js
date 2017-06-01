@@ -25,95 +25,104 @@ var demoApp = angular
                     });
 
 var routeApp = angular
-                    .module("routeApp", ["ngRoute"])
-                    .config(function ($routeProvider, $locationProvider) {
-                        $locationProvider.hashPrefix('');
-                        $routeProvider.caseInsensitiveMatch = true;
-                        $routeProvider
-                            .when("/home", {
-                                //templateUrl: "Templates/home.html",
-                                template: "<h1>Inline Template in Action</h1>",
-                                controller: "homeController",
-                                controllerAs: "homeCTRL"
-                            })
-                            .when("/courses", {
-                                templateUrl: "Templates/Course.html",
-                                controller: "coursesController as coursesCTRL",
-                                caseInsensitiveMatch: true
-                            })
-                            .when("/students", {
-                                templateUrl: "Templates/Student.html",
-                                controller: "studentsController as studentsCTRL"
-                            })
-                            .when("/students/:id", {
-                                templateUrl: "Templates/StudentDetails.html",
-                                controller: "studentDetailsController as studentDetailsCTRL"
-                            })
-                            .otherwise({
-                                redirectTo: "/home"
-                            })
-                        $locationProvider.html5Mode(true);
-                        })
-                        .controller("homeController", function () {
-                            this.message = "Home Page";
-                        })
-                        .controller("coursesController", function () {
-                            this.courses = ["C#", "VB.NET", "SQL Server", "ASP.NET"];
-                        })
-                        .controller("studentsController", function ($http, $route, $scope, $rootScope, $log) {
-                            
-                            var vm = this;
-
-                            $rootScope.$on("$locationChangeStart", function () {
-                                $log.debug("$locationChangeStart fired");
-                            });
-
-                            $rootScope.$on("$routeChangeStart", function () {
-                                $log.debug("$routeChangeStart fired");
-                            });
-
-                            $rootScope.$on("$locationChangeSuccess", function () {
-                                $log.debug("$locationChangeSuccess fired");
-                            });
-
-                            $rootScope.$on("$routeChangeSuccess", function () {
-                                $log.debug("$routeChangeSuccess fired");
-                            });
-
-                            $scope.$on("$locationChangeStart", function (event, next, current) {
-                                $log.debug("$locationChangeStart fired");
-                                $log.debug(event);
-                                $log.debug(next);
-                                $log.debug(current);
-                            });
-
-                            $scope.$on("$routeChangeStart", function (event, next, current) {
-                                $log.debug("$routeChangeStart fired");
-                                $log.debug(event);
-                                $log.debug(next);
-                                $log.debug(current);
-                            });
-
-                            vm.reloadData = function () {
-                                $route.reload();
-                            }
-
-                            $http.get('StudentService.asmx/GetAllStudents')
-                            .then(function (response) {
-                                vm.students = response.data;
-                            })
-                        })
-                        .controller("studentDetailsController", function ($http, $routeParams) {
-                            var vm = this;
-                            $http({
-                                url: 'StudentService.asmx/GetStudent',
-                                params: { id: $routeParams.id },
-                                method: "GET"
-                            })
-                            .then(function (response) {
-                                vm.student = response.data;
-                            })
+    .module("routeApp", ["ngRoute"])
+    .config(function ($routeProvider, $locationProvider) {
+        $locationProvider.hashPrefix('');
+        $routeProvider.caseInsensitiveMatch = true;
+        $routeProvider
+            .when("/home", {
+                //templateUrl: "Templates/home.html",
+                template: "<h1>Inline Template in Action</h1>",
+                controller: "homeController",
+                controllerAs: "homeCTRL"
+            })
+            .when("/courses", {
+                templateUrl: "Templates/Course.html",
+                controller: "coursesController as coursesCTRL",
+                caseInsensitiveMatch: true
+            })
+            .when("/students", {
+                templateUrl: "Templates/Student.html",
+                controller: "studentsController as studentsCTRL"
+            })
+            .when("/students/:id", {
+                templateUrl: "Templates/studentDetails.html",
+                controller: "studentDetailsController as studentDetailsCTRL"
+            })
+            .when("/studentsSearch/:name?", {
+                templateUrl: "Templates/studentsSearch.html",
+                controller: "studentsSearchController as studentsSearchCTRL"
+            })
+            .otherwise({
+                redirectTo: "/home"
+            })
+        $locationProvider.html5Mode(true);
     })
+    .controller("homeController", function () {
+        this.message = "Home Page";
+    })
+    .controller("coursesController", function () {
+        this.courses = ["C#", "VB.NET", "SQL Server", "ASP.NET"];
+    })
+    .controller("studentsController", function ($http, $route, $scope, $location, $rootScope, $log) {
+
+        var vm = this;
+
+        vm.searchStudent = function () {
+            if (vm.name) {
+                $location.url("/studentsSearch/" + vm.name);
+            }
+            else {
+                $location.url("/studentsSearch");
+            }
+        }
+
+        vm.reloadData = function () {
+            $route.reload();
+        }
+
+        $http.get('StudentService.asmx/GetAllStudents')
+            .then(function (response) {
+                vm.students = response.data;
+            })
+    })
+    .controller("studentDetailsController", function ($http, $routeParams) {
+        var vm = this;
+        $http({
+            url: 'StudentService.asmx/GetStudent',
+            params: { id: $routeParams.id },
+            method: "GET"
+        })
+            .then(function (response) {
+                vm.student = response.data;
+            })
+
+    })
+    .controller("studentsSearchController", function ($http, $routeParams) {
+        var vm = this;
+
+        if ($routeParams.name) {
+            $http({
+                url: 'StudentService.asmx/GetStudentsByName',
+                params: { name: $routeParams.name },
+                method: "GET"
+            })
+                .then(function (response) {
+                    vm.students = response.data;
+                })
+        }
+        else {
+            $http({
+                url: 'StudentService.asmx/GetAllStudents',
+                method: "GET"
+            })
+                .then(function (response) {
+                    vm.students = response.data;
+                })
+        }
+    });
+
+                            
 
 var locationApp = angular.module("location", [])
     .controller("countryController", function () {
