@@ -60,9 +60,12 @@ var routeApp = angular
                         .controller("coursesController", function () {
                             this.courses = ["C#", "VB.NET", "SQL Server", "ASP.NET"];
                         })
-                        .controller("studentsController", function ($http) {
+                        .controller("studentsController", function ($http, $route) {
                             var vm = this;
 
+                            vm.reloadData = function () {
+                                $route.reload();
+                            }
                             $http.get('StudentService.asmx/GetAllStudents')
                             .then(function (response) {
                                 vm.students = response.data;
