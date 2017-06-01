@@ -75,4 +75,15 @@ var routeApp = angular
                             .then(function (response) {
                                 vm.student = response.data;
                             })
-                        })
+    })
+
+var locationApp = angular.module("location", [])
+    .controller("countryController", function () {
+        this.name = "India";
+    })
+    .controller("stateController", function () {
+        this.name = "Maharashtra";
+    })
+    .controller("cityController", function () {
+        this.name = "Mumbai";
+    });

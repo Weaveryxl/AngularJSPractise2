@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html ng-app="location">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/Script.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/NewStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div ng-controller="countryController as countryCTRL">
+        {{countryCTRL.name}}
+        <div ng-controller="stateController as stateCTRL">
+            {{countryCTRL.name}} - {{stateCTRL.name}}
+            <div ng-controller="cityController as cityCTRL">
+                {{countryCTRL.name}} - {{stateCTRL.name}} - {{cityCTRL.name}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

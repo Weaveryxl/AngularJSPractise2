@@ -96,6 +96,7 @@
   <ItemGroup>
     <Content Include="Content\MyStyle.css" />
     <Content Include="Content\NewStyle.css" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
