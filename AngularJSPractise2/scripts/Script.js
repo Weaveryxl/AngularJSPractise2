@@ -60,24 +60,44 @@ var routeApp = angular
                         .controller("coursesController", function () {
                             this.courses = ["C#", "VB.NET", "SQL Server", "ASP.NET"];
                         })
-                        .controller("studentsController", function ($http, $route, $scope) {
-                            //$scope.$on("$routeChangeStart", function (event, next, current) {
-                            //    if (!confirm("Are you sure you want to navigate away from this page to"
-                            //        + next.$$route.originalPath)) {
-                            //        event.preventDefault();
-                            //    }
-                            //})
-                            $scope.$on("$locationChangeStart", function (event, next, current) {
-                                if (!confirm("Are you sure you want to navigate away from this page to"
-                                    + next)) {
-                                    event.preventDefault();
-                                }
-                            })
+                        .controller("studentsController", function ($http, $route, $scope, $rootScope, $log) {
+                            
                             var vm = this;
+
+                            $rootScope.$on("$locationChangeStart", function () {
+                                $log.debug("$locationChangeStart fired");
+                            });
+
+                            $rootScope.$on("$routeChangeStart", function () {
+                                $log.debug("$routeChangeStart fired");
+                            });
+
+                            $rootScope.$on("$locationChangeSuccess", function () {
+                                $log.debug("$locationChangeSuccess fired");
+                            });
+
+                            $rootScope.$on("$routeChangeSuccess", function () {
+                                $log.debug("$routeChangeSuccess fired");
+                            });
+
+                            $scope.$on("$locationChangeStart", function (event, next, current) {
+                                $log.debug("$locationChangeStart fired");
+                                $log.debug(event);
+                                $log.debug(next);
+                                $log.debug(current);
+                            });
+
+                            $scope.$on("$routeChangeStart", function (event, next, current) {
+                                $log.debug("$routeChangeStart fired");
+                                $log.debug(event);
+                                $log.debug(next);
+                                $log.debug(current);
+                            });
 
                             vm.reloadData = function () {
                                 $route.reload();
                             }
+
                             $http.get('StudentService.asmx/GetAllStudents')
                             .then(function (response) {
                                 vm.students = response.data;
