@@ -93,3 +93,12 @@ var locationApp = angular.module("location", [])
     .controller("cityController", function () {
         this.name = "Mumbai";
     });
+
+var colorApp = angular.module("color", [])
+    .controller("redController", function ($scope, $rootScope) {
+        $scope.redColor = "I'm red.";
+        $rootScope.rootScopeColor = "I'm root scope color.";
+    })
+    .controller("greenController", function ($scope) {
+        $scope.greenColor = "I'm green.";
+    });
