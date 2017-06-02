@@ -60,7 +60,7 @@ var routeApp = angular
                     }
                 }
             })
-            .state("studentByid", {
+            .state("studentDetails", {
                 url: "/students/:id",
                 templateUrl: "Templates/studentDetails.html",
                 controller: "studentDetailsController as studentDetailsCTRL"
@@ -100,11 +100,11 @@ var routeApp = angular
 
         vm.students = studentsList;
     })
-    .controller("studentDetailsController", function ($http, $routeParams) {
+    .controller("studentDetailsController", function ($http, $stateParams) {
         var vm = this;
         $http({
             url: 'StudentService.asmx/GetStudent',
-            params: { id: $routeParams.id },
+            params: { id: $stateParams.id },
             method: "GET"
         })
             .then(function (response) {
@@ -112,13 +112,13 @@ var routeApp = angular
             })
 
     })
-    .controller("studentsSearchController", function ($http, $routeParams) {
+    .controller("studentsSearchController", function ($http, $stateParams) {
         var vm = this;
 
-        if ($routeParams.name) {
+        if ($stateParams.name) {
             $http({
                 url: 'StudentService.asmx/GetStudentsByName',
-                params: { name: $routeParams.name },
+                params: { name: $stateParams.name },
                 method: "GET"
             })
                 .then(function (response) {
