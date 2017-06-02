@@ -25,7 +25,7 @@ var demoApp = angular
                     });
 
 var routeApp = angular
-    .module("routeApp", ["ngRoute"])
+    .module("routeApp", ["ui.router"])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.hashPrefix('');
         $routeProvider.caseInsensitiveMatch = true;
