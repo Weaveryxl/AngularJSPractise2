@@ -22,6 +22,7 @@ namespace AngularJSPractise2
         [WebMethod]
         public void GetAllStudents()
         {
+            System.Threading.Thread.Sleep(2000);
             List<Student> listStudents = new List<Student>();
 
             string cs = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;

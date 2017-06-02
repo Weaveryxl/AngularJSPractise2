@@ -43,7 +43,18 @@ var routeApp = angular
             })
             .when("/students", {
                 templateUrl: "Templates/Student.html",
-                controller: "studentsController as studentsCTRL"
+                controller: "studentsController as studentsCTRL",
+                resolve: {
+                    studentsList: function ($http) {
+                        return $http({
+                            url: 'StudentService.asmx/GetAllStudents',
+                            method: "GET"
+                        })
+                            .then(function (response) {
+                                return response.data;
+                            })
+                    }
+                }
             })
             .when("/students/:id", {
                 templateUrl: "Templates/studentDetails.html",
@@ -64,7 +75,7 @@ var routeApp = angular
     .controller("coursesController", function () {
         this.courses = ["C#", "VB.NET", "SQL Server", "ASP.NET"];
     })
-    .controller("studentsController", function ($http, $route, $scope, $location, $rootScope, $log) {
+    .controller("studentsController", function (studentsList, $route, $location) {
 
         var vm = this;
 
@@ -81,10 +92,7 @@ var routeApp = angular
             $route.reload();
         }
 
-        $http.get('StudentService.asmx/GetAllStudents')
-            .then(function (response) {
-                vm.students = response.data;
-            })
+        vm.students = studentsList;
     })
     .controller("studentDetailsController", function ($http, $routeParams) {
         var vm = this;
