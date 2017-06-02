@@ -26,22 +26,26 @@ var demoApp = angular
 
 var routeApp = angular
     .module("routeApp", ["ui.router"])
-    .config(function ($routeProvider, $locationProvider) {
-        $locationProvider.hashPrefix('');
-        $routeProvider.caseInsensitiveMatch = true;
-        $routeProvider
-            .when("/home", {
-                //templateUrl: "Templates/home.html",
-                template: "<h1>Inline Template in Action</h1>",
+    .config(function ($stateProvider) {
+        //$locationProvider.hashPrefix('');
+        //$routeProvider.caseInsensitiveMatch = true;
+
+        $stateProvider
+            .state("home", {
+                url: "/home",
+                templateUrl: "Templates/home.html",
+                //template: "<h1>Inline Template in Action</h1>",
                 controller: "homeController",
                 controllerAs: "homeCTRL"
             })
-            .when("/courses", {
+            .state("courses", {
+                url: "/courses",
                 templateUrl: "Templates/Course.html",
                 controller: "coursesController as coursesCTRL",
                 caseInsensitiveMatch: true
             })
-            .when("/students", {
+            .state("students", {
+                url: "/students",
                 templateUrl: "Templates/Student.html",
                 controller: "studentsController as studentsCTRL",
                 resolve: {
@@ -56,18 +60,20 @@ var routeApp = angular
                     }
                 }
             })
-            .when("/students/:id", {
+            .state("studentByid", {
+                url: "/students/:id",
                 templateUrl: "Templates/studentDetails.html",
                 controller: "studentDetailsController as studentDetailsCTRL"
             })
-            .when("/studentsSearch/:name?", {
+            .state("studentsByName", {
+                url: "/studentsSearch/:name?",
                 templateUrl: "Templates/studentsSearch.html",
                 controller: "studentsSearchController as studentsSearchCTRL"
             })
-            .otherwise({
-                redirectTo: "/home"
-            })
-        $locationProvider.html5Mode(true);
+            //.otherwise({
+            //    redirectTo: "/home"
+            //})
+        //$locationProvider.html5Mode(true);
     })
     .controller("homeController", function () {
         this.message = "Home Page";
@@ -75,7 +81,7 @@ var routeApp = angular
     .controller("coursesController", function () {
         this.courses = ["C#", "VB.NET", "SQL Server", "ASP.NET"];
     })
-    .controller("studentsController", function (studentsList, $route, $location) {
+    .controller("studentsController", function (studentsList, $state, $location) {
 
         var vm = this;
 
@@ -89,7 +95,7 @@ var routeApp = angular
         }
 
         vm.reloadData = function () {
-            $route.reload();
+            $state.reload();
         }
 
         vm.students = studentsList;
